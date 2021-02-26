@@ -1,6 +1,6 @@
 {
   "name": "avro-ts-converter",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Convert an AVRO schema to a TypeScript interface.",
   "main": "dist/src/index.js",
   "author": "Yateen Kedare",
