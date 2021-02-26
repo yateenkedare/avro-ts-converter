@@ -26,7 +26,7 @@ export const convertPrimitive = (avroType: string) => {
     case 'bytes':
       return 'Buffer';
     case 'null':
-      return 'null | undefined';
+      return 'null';
     case 'boolean':
       return 'boolean';
     default:
@@ -47,7 +47,7 @@ const stripNamespace = (name: string) => name.split('.').pop() as string;
 /** Convert an Avro Record type. Return the name, but add the definition to the file */
 const convertRecord = (recordType: RecordType, buffer: string[]): string => {
   const doc = document(recordType);
-  const cleanName = `I${stripNamespace(recordType.name)}`;
+  const cleanName = `${stripNamespace(recordType.name)}`;
   const interfaceDef = `${doc}export interface ${cleanName} {
 ${recordType.fields.map(field => convertFieldDec(field, buffer)).join('\n')}
 }
