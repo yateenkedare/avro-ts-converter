@@ -95,6 +95,8 @@ const convertType = (type: Type, buffer: string[]): string => {
   } else if (isEnumType(type)) {
     // array, call recursively for the array element type
     return convertEnum(type, buffer);
+  } else if (type.type && typeof type.type == 'string') {
+    return convertPrimitive(type.type);
   } else {
     console.error('Cannot work out type', type);
     return 'UNKNOWN';
